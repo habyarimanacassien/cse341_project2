@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 const validateId = (req, res, next) => {
-    if (!mongoose.isValidObjectId(req.params.id)) {
+    const id = req.params.id || req.params.memberId;
+    if (!mongoose.isValidObjectId(id)) {
         return res.status(400).json({ message: 'Invalid id.' });
     }
     next();

@@ -3,8 +3,18 @@ const Withdraw = require('../models/withdraw');
 const getAll = async (req, res, next) => {
     //#swagger.tags=['Withdraws'];
     try {
-        const filter = req.query.memberId ? { memberId: req.query.memberId } : {};
-        const withdraws = await Withdraw.find(filter).populate('memberId', 'familyName firstName');
+        const withdraws = await Withdraw.find().populate('memberId', 'familyName firstName');
+        res.status(200).json(withdraws);
+    } catch (error) {
+        next(error);
+    }
+};
+
+const getByMember = async (req, res, next) => {
+    //#swagger.tags=['Withdraws'];
+    //#swagger.description='Records of one member. Use the _id from GET /profile.';
+    try {
+        const withdraws = await Withdraw.find({ memberId: req.params.memberId }).populate('memberId', 'familyName firstName');
         res.status(200).json(withdraws);
     } catch (error) {
         next(error);
@@ -60,6 +70,7 @@ const deleteWithdraw = async (req, res, next) => {
 
 module.exports = {
     getAll,
+    getByMember,
     getSingle,
     createWithdraw,
     updateWithdraw,

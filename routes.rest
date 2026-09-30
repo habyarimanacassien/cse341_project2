@@ -42,7 +42,7 @@ DELETE {{host}}/profile/{{memberId}}
 GET {{host}}/loans
 
 ### Get the loans of one member
-GET {{host}}/loans?memberId={{memberId}}
+GET {{host}}/loans/member/{{memberId}}
 
 ### Create loan
 POST {{host}}/loans
@@ -64,7 +64,7 @@ DELETE {{host}}/loans/{{loanId}}
 GET {{host}}/interest
 
 ### Get the interest of one member
-GET {{host}}/interest?memberId={{memberId}}
+GET {{host}}/interest/member/{{memberId}}
 
 ### Create interest
 POST {{host}}/interest
@@ -86,7 +86,7 @@ DELETE {{host}}/interest/{{interestId}}
 GET {{host}}/savings
 
 ### Get the savings of one member
-GET {{host}}/savings?memberId={{memberId}}
+GET {{host}}/savings/member/{{memberId}}
 
 ### Create savings
 POST {{host}}/savings
@@ -108,7 +108,7 @@ DELETE {{host}}/savings/{{savingId}}
 GET {{host}}/withdraws
 
 ### Get the withdraws of one member
-GET {{host}}/withdraws?memberId={{memberId}}
+GET {{host}}/withdraws/member/{{memberId}}
 
 ### Create withdraws
 POST {{host}}/withdraws

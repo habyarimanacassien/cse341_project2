@@ -199,13 +199,6 @@
           "Loans"
         ],
         "description": "",
-        "parameters": [
-          {
-            "name": "memberId",
-            "in": "query",
-            "type": "string"
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -248,6 +241,30 @@
         "responses": {
           "201": {
             "description": "Created"
+          }
+        }
+      }
+    },
+    "/loans/member/{memberId}": {
+      "get": {
+        "tags": [
+          "Loans"
+        ],
+        "description": "Records of one member. Use the _id from GET /profile.",
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -352,13 +369,6 @@
           "Interest"
         ],
         "description": "",
-        "parameters": [
-          {
-            "name": "memberId",
-            "in": "query",
-            "type": "string"
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -405,6 +415,30 @@
         "responses": {
           "201": {
             "description": "Created"
+          }
+        }
+      }
+    },
+    "/interest/member/{memberId}": {
+      "get": {
+        "tags": [
+          "Interest"
+        ],
+        "description": "Records of one member. Use the _id from GET /profile.",
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -514,13 +548,6 @@
           "Savings"
         ],
         "description": "",
-        "parameters": [
-          {
-            "name": "memberId",
-            "in": "query",
-            "type": "string"
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -572,6 +599,30 @@
         "responses": {
           "201": {
             "description": "Created"
+          }
+        }
+      }
+    },
+    "/savings/member/{memberId}": {
+      "get": {
+        "tags": [
+          "Savings"
+        ],
+        "description": "Records of one member. Use the _id from GET /profile.",
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -689,13 +740,6 @@
           "Withdraws"
         ],
         "description": "",
-        "parameters": [
-          {
-            "name": "memberId",
-            "in": "query",
-            "type": "string"
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -742,6 +786,30 @@
         "responses": {
           "201": {
             "description": "Created"
+          }
+        }
+      }
+    },
+    "/withdraws/member/{memberId}": {
+      "get": {
+        "tags": [
+          "Withdraws"
+        ],
+        "description": "Records of one member. Use the _id from GET /profile.",
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }

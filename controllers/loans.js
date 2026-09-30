@@ -3,8 +3,18 @@ const Loan = require('../models/loan');
 const getAll = async (req, res, next) => {
     //#swagger.tags=['Loans'];
     try {
-        const filter = req.query.memberId ? { memberId: req.query.memberId } : {};
-        const loans = await Loan.find(filter).populate('memberId', 'familyName firstName');
+        const loans = await Loan.find().populate('memberId', 'familyName firstName');
+        res.status(200).json(loans);
+    } catch (error) {
+        next(error);
+    }
+};
+
+const getByMember = async (req, res, next) => {
+    //#swagger.tags=['Loans'];
+    //#swagger.description='Records of one member. Use the _id from GET /profile.';
+    try {
+        const loans = await Loan.find({ memberId: req.params.memberId }).populate('memberId', 'familyName firstName');
         res.status(200).json(loans);
     } catch (error) {
         next(error);
@@ -60,6 +70,7 @@ const deleteLoan = async (req, res, next) => {
 
 module.exports = {
     getAll,
+    getByMember,
     getSingle,
     createLoan,
     updateLoan,

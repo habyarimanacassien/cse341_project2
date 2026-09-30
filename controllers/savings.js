@@ -3,8 +3,18 @@ const Saving = require('../models/saving');
 const getAll = async (req, res, next) => {
     //#swagger.tags=['Savings'];
     try {
-        const filter = req.query.memberId ? { memberId: req.query.memberId } : {};
-        const savings = await Saving.find(filter).populate('memberId', 'familyName firstName');
+        const savings = await Saving.find().populate('memberId', 'familyName firstName');
+        res.status(200).json(savings);
+    } catch (error) {
+        next(error);
+    }
+};
+
+const getByMember = async (req, res, next) => {
+    //#swagger.tags=['Savings'];
+    //#swagger.description='Records of one member. Use the _id from GET /profile.';
+    try {
+        const savings = await Saving.find({ memberId: req.params.memberId }).populate('memberId', 'familyName firstName');
         res.status(200).json(savings);
     } catch (error) {
         next(error);
@@ -60,6 +70,7 @@ const deleteSaving = async (req, res, next) => {
 
 module.exports = {
     getAll,
+    getByMember,
     getSingle,
     createSaving,
     updateSaving,

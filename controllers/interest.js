@@ -3,8 +3,18 @@ const Interest = require('../models/interest');
 const getAll = async (req, res, next) => {
     //#swagger.tags=['Interest'];
     try {
-        const filter = req.query.memberId ? { memberId: req.query.memberId } : {};
-        const interest = await Interest.find(filter).populate('memberId', 'familyName firstName');
+        const interest = await Interest.find().populate('memberId', 'familyName firstName');
+        res.status(200).json(interest);
+    } catch (error) {
+        next(error);
+    }
+};
+
+const getByMember = async (req, res, next) => {
+    //#swagger.tags=['Interest'];
+    //#swagger.description='Records of one member. Use the _id from GET /profile.';
+    try {
+        const interest = await Interest.find({ memberId: req.params.memberId }).populate('memberId', 'familyName firstName');
         res.status(200).json(interest);
     } catch (error) {
         next(error);
@@ -60,6 +70,7 @@ const deleteInterest = async (req, res, next) => {
 
 module.exports = {
     getAll,
+    getByMember,
     getSingle,
     createInterest,
     updateInterest,
