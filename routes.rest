@@ -1,0 +1,149 @@
+// LOCALHOST
+
+
+@host = http://localhost:3000
+@memberId = 6abd06fc3670a7ef3186328d
+@loanId = 6abd07893670a7ef3186328e
+@interestId = 6abd07993670a7ef3186328f
+@savingId = 6abd07b03670a7ef31863290
+@withdrawId = 6abd07b83670a7ef31863291
+
+### Get all members
+GET {{host}}/profile
+
+### Get one member
+GET {{host}}/profile/{{memberId}}
+
+### Create member
+POST {{host}}/profile
+Content-Type: application/json
+
+{
+  "familyName": "TEST",
+  "firstName": "Demo",
+  "email": "demo.member@example.com",
+  "phoneNumber": "+250781112223",
+  "nationalID": "1199912345678901",
+  "address": "Kigali",
+  "memberSince": 2026
+}
+
+### Update member
+PUT {{host}}/profile/{{memberId}}
+Content-Type: application/json
+
+{ "address": "West" }
+
+### Delete member (after deleting its loan, interest, savings and withdraws)
+DELETE {{host}}/profile/{{memberId}}
+
+
+### Get all loans
+GET {{host}}/loans
+
+### Get the loans of one member
+GET {{host}}/loans?memberId={{memberId}}
+
+### Create loan
+POST {{host}}/loans
+Content-Type: application/json
+
+{ "memberId": "{{memberId}}", "totalLoan": 900000, "period": 12 }
+
+### Update loan
+PUT {{host}}/loans/{{loanId}}
+Content-Type: application/json
+
+{ "totalLoan": 950000, "period": 18 }
+
+### Delete loan
+DELETE {{host}}/loans/{{loanId}}
+
+
+### Get all interest
+GET {{host}}/interest
+
+### Get the interest of one member
+GET {{host}}/interest?memberId={{memberId}}
+
+### Create interest
+POST {{host}}/interest
+Content-Type: application/json
+
+{ "memberId": "{{memberId}}", "years": { "2025": 100000, "2026": 120000 } }
+
+### Update interest
+PUT {{host}}/interest/{{interestId}}
+Content-Type: application/json
+
+{ "years": { "2025": 101000, "2026": 130000 } }
+
+### Delete interest
+DELETE {{host}}/interest/{{interestId}}
+
+
+### Get all savings
+GET {{host}}/savings
+
+### Get the savings of one member
+GET {{host}}/savings?memberId={{memberId}}
+
+### Create savings
+POST {{host}}/savings
+Content-Type: application/json
+
+{ "memberId": "{{memberId}}", "startUp": 100000, "months": { "2025-11": 50000, "2025-12": 60000 } }
+
+### Update savings (add a month)
+PUT {{host}}/savings/{{savingId}}
+Content-Type: application/json
+
+{ "months": { "2025-11": 50000, "2025-12": 60000, "2026-01": 40000 } }
+
+### Delete savings
+DELETE {{host}}/savings/{{savingId}}
+
+
+### Get all withdraws
+GET {{host}}/withdraws
+
+### Get the withdraws of one member
+GET {{host}}/withdraws?memberId={{memberId}}
+
+### Create withdraws
+POST {{host}}/withdraws
+Content-Type: application/json
+
+{ "memberId": "{{memberId}}", "months": { "2025-11": 20000, "2025-12": 15000 } }
+
+### Update withdraws
+PUT {{host}}/withdraws/{{withdrawId}}
+Content-Type: application/json
+
+{ "months": { "2025-11": 20000, "2025-12": 25000 } }
+
+### Delete withdraws
+DELETE {{host}}/withdraws/{{withdrawId}}
+
+
+// A FEW ERROR CASES
+
+### Invalid id -> 400
+GET {{host}}/loans/123
+
+### Unknown id -> 404
+GET {{host}}/loans/aaaaaaaaaaaaaaaaaaaaaaaa
+
+### Missing fields -> 400
+POST {{host}}/profile
+Content-Type: application/json
+
+{ "firstName": "Only" , "memberSince": 2024}
+
+### Member that does not exist -> 400
+POST {{host}}/loans
+Content-Type: application/json
+
+{ "memberId": "aaaaaaaaaaaaaaaaaaaaaaaa", "totalLoan": 900000, "period": 12 }
+
+### Same member twice (send the savings POST two times) -> 409
