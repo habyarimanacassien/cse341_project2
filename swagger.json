@@ -1,0 +1,1030 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Caisse d'Entraide API",
+    "description": "Members (profile), loans, interest, savings and withdraws. Every data route needs a login: open /login in the browser, sign in with GitHub, then come back to this page and use Try it out.",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Hello World"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/login": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Open this address in the browser (not in Try it out) to sign in with GitHub.",
+        "responses": {
+          "302": {
+            "description": "Redirects to GitHub to sign in"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Signs you out and goes back to the home page.",
+        "responses": {
+          "302": {
+            "description": "Redirects to the home page"
+          }
+        }
+      }
+    },
+    "/profile/": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "You must log in first"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Profile"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "familyName": {
+                  "type": "string",
+                  "example": "MUHIRE"
+                },
+                "firstName": {
+                  "type": "string",
+                  "example": "Annonciathe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "annonciathe@example.com"
+                },
+                "phoneNumber": {
+                  "type": "string",
+                  "example": "+250788123456"
+                },
+                "nationalID": {
+                  "type": "string",
+                  "example": "1199580012345678"
+                },
+                "address": {
+                  "type": "string",
+                  "example": "Kigali"
+                },
+                "memberSince": {
+                  "type": "number",
+                  "example": 2025
+                }
+              },
+              "required": [
+                "familyName",
+                "firstName",
+                "email",
+                "phoneNumber",
+                "nationalID",
+                "address",
+                "memberSince"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "You must log in first"
+          }
+        }
+      }
+    },
+    "/profile/{id}": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Profile"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "address": {
+                  "type": "string",
+                  "example": "West"
+                },
+                "phoneNumber": {
+                  "type": "string",
+                  "example": "+250788123456"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Profile"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        }
+      }
+    },
+    "/loans/": {
+      "get": {
+        "tags": [
+          "Loans"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "You must log in first"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Loans"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "memberId": {
+                  "type": "string",
+                  "example": "member id from GET /profile"
+                },
+                "totalLoan": {
+                  "type": "number",
+                  "example": 2000000
+                },
+                "period": {
+                  "type": "number",
+                  "example": 12
+                }
+              },
+              "required": [
+                "memberId",
+                "totalLoan",
+                "period"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "You must log in first"
+          }
+        }
+      }
+    },
+    "/loans/member/{memberId}": {
+      "get": {
+        "tags": [
+          "Loans"
+        ],
+        "description": "Records of one member. Use the _id from GET /profile.",
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          }
+        }
+      }
+    },
+    "/loans/{id}": {
+      "get": {
+        "tags": [
+          "Loans"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Loans"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "totalLoan": {
+                  "type": "number",
+                  "example": 2500000
+                },
+                "period": {
+                  "type": "number",
+                  "example": 18
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Loans"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/interest/": {
+      "get": {
+        "tags": [
+          "Interest"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "You must log in first"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Interest"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "memberId": {
+                  "type": "string",
+                  "example": "member id from GET /profile"
+                },
+                "years": {
+                  "type": "object",
+                  "properties": {
+                    "2025": {
+                      "type": "number",
+                      "example": 155000
+                    },
+                    "2026": {
+                      "type": "number",
+                      "example": 192000
+                    }
+                  }
+                }
+              },
+              "required": [
+                "memberId",
+                "years"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "You must log in first"
+          }
+        }
+      }
+    },
+    "/interest/member/{memberId}": {
+      "get": {
+        "tags": [
+          "Interest"
+        ],
+        "description": "Records of one member. Use the _id from GET /profile.",
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          }
+        }
+      }
+    },
+    "/interest/{id}": {
+      "get": {
+        "tags": [
+          "Interest"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Interest"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "years": {
+                  "type": "object",
+                  "properties": {
+                    "2025": {
+                      "type": "number",
+                      "example": 155000
+                    },
+                    "2026": {
+                      "type": "number",
+                      "example": 200000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Interest"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/savings/": {
+      "get": {
+        "tags": [
+          "Savings"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "You must log in first"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Savings"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "memberId": {
+                  "type": "string",
+                  "example": "member id from GET /profile"
+                },
+                "startUp": {
+                  "type": "number",
+                  "example": 1691000
+                },
+                "months": {
+                  "type": "object",
+                  "properties": {
+                    "2025-11": {
+                      "type": "number",
+                      "example": 66000
+                    },
+                    "2025-12": {
+                      "type": "number",
+                      "example": 212000
+                    }
+                  }
+                }
+              },
+              "required": [
+                "memberId",
+                "startUp",
+                "months"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "You must log in first"
+          }
+        }
+      }
+    },
+    "/savings/member/{memberId}": {
+      "get": {
+        "tags": [
+          "Savings"
+        ],
+        "description": "Records of one member. Use the _id from GET /profile.",
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          }
+        }
+      }
+    },
+    "/savings/{id}": {
+      "get": {
+        "tags": [
+          "Savings"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Savings"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "startUp": {
+                  "type": "number",
+                  "example": 1691000
+                },
+                "months": {
+                  "type": "object",
+                  "properties": {
+                    "2025-11": {
+                      "type": "number",
+                      "example": 66000
+                    },
+                    "2025-12": {
+                      "type": "number",
+                      "example": 212000
+                    },
+                    "2026-01": {
+                      "type": "number",
+                      "example": 38000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Savings"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/withdraws/": {
+      "get": {
+        "tags": [
+          "Withdraws"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "You must log in first"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Withdraws"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "memberId": {
+                  "type": "string",
+                  "example": "member id from GET /profile"
+                },
+                "months": {
+                  "type": "object",
+                  "properties": {
+                    "2025-11": {
+                      "type": "number",
+                      "example": 23000
+                    },
+                    "2025-12": {
+                      "type": "number",
+                      "example": 35000
+                    }
+                  }
+                }
+              },
+              "required": [
+                "memberId",
+                "months"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "You must log in first"
+          }
+        }
+      }
+    },
+    "/withdraws/member/{memberId}": {
+      "get": {
+        "tags": [
+          "Withdraws"
+        ],
+        "description": "Records of one member. Use the _id from GET /profile.",
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          }
+        }
+      }
+    },
+    "/withdraws/{id}": {
+      "get": {
+        "tags": [
+          "Withdraws"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Withdraws"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "months": {
+                  "type": "object",
+                  "properties": {
+                    "2025-11": {
+                      "type": "number",
+                      "example": 23000
+                    },
+                    "2025-12": {
+                      "type": "number",
+                      "example": 40000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Withdraws"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "You must log in first"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  }
+}

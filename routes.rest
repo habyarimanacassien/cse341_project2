@@ -1,0 +1,183 @@
+// Log in first: open http://localhost:3000/login in the browser and sign in with GitHub.
+// Then press F12 > Application > Cookies, copy the value of connect.sid and paste it in @cookie.
+// Testing: send "Create member", copy the "_id" of the reply into @memberId, then create a loan,
+// interest, savings and withdraws for that member and copy each new "_id". Your real members stay untouched.
+@host = http://localhost:3000
+@cookie = s%3A0Jul-5sFwyt81LK1SWvbAIRqPzynMn9F.h4Um5aAw8MQAFy0%2BpyoLCkEQXMZZssnmwQKb5RqjtVI
+@memberId = 6abd06fc3670a7ef3186328d
+@loanId = PASTE_THE_LOAN_ID_HERE
+@interestId = PASTE_THE_INTEREST_ID_HERE
+@savingId = PASTE_THE_SAVINGS_ID_HERE
+@withdrawId = PASTE_THE_WITHDRAWS_ID_HERE
+
+### Get all members
+GET {{host}}/profile
+Cookie: connect.sid={{cookie}}
+
+### Get one member
+GET {{host}}/profile/{{memberId}}
+Cookie: connect.sid={{cookie}}
+
+### Create member
+POST {{host}}/profile
+Cookie: connect.sid={{cookie}}
+Content-Type: application/json
+
+{
+  "familyName": "TEST",
+  "firstName": "Demo",
+  "email": "demo.member@example.com",
+  "phoneNumber": "+250781112223",
+  "nationalID": "1199912345678901",
+  "address": "Kigali",
+  "memberSince": 2026
+}
+
+### Update member
+PUT {{host}}/profile/{{memberId}}
+Cookie: connect.sid={{cookie}}
+Content-Type: application/json
+
+{ "address": "West" }
+
+### Delete member (after deleting its loan, interest, savings and withdraws)
+DELETE {{host}}/profile/{{memberId}}
+Cookie: connect.sid={{cookie}}
+
+
+### Get all loans
+GET {{host}}/loans
+Cookie: connect.sid={{cookie}}
+
+### Get the loans of one member
+GET {{host}}/loans/member/{{memberId}}
+Cookie: connect.sid={{cookie}}
+
+### Create loan
+POST {{host}}/loans
+Cookie: connect.sid={{cookie}}
+Content-Type: application/json
+
+{ "memberId": "{{memberId}}", "totalLoan": 900000, "period": 12 }
+
+### Update loan
+PUT {{host}}/loans/{{loanId}}
+Cookie: connect.sid={{cookie}}
+Content-Type: application/json
+
+{ "totalLoan": 950000, "period": 18 }
+
+### Delete loan
+DELETE {{host}}/loans/{{loanId}}
+Cookie: connect.sid={{cookie}}
+
+
+### Get all interest
+GET {{host}}/interest
+Cookie: connect.sid={{cookie}}
+
+### Get the interest of one member
+GET {{host}}/interest/member/{{memberId}}
+Cookie: connect.sid={{cookie}}
+
+### Create interest
+POST {{host}}/interest
+Cookie: connect.sid={{cookie}}
+Content-Type: application/json
+
+{ "memberId": "{{memberId}}", "years": { "2025": 100000, "2026": 120000 } }
+
+### Update interest
+PUT {{host}}/interest/{{interestId}}
+Cookie: connect.sid={{cookie}}
+Content-Type: application/json
+
+{ "years": { "2025": 100000, "2026": 130000 } }
+
+### Delete interest
+DELETE {{host}}/interest/{{interestId}}
+Cookie: connect.sid={{cookie}}
+
+
+### Get all savings
+GET {{host}}/savings
+Cookie: connect.sid={{cookie}}
+
+### Get the savings of one member
+GET {{host}}/savings/member/{{memberId}}
+Cookie: connect.sid={{cookie}}
+
+### Create savings
+POST {{host}}/savings
+Cookie: connect.sid={{cookie}}
+Content-Type: application/json
+
+{ "memberId": "{{memberId}}", "startUp": 100000, "months": { "2025-11": 50000, "2025-12": 60000 } }
+
+### Update savings (add a month)
+PUT {{host}}/savings/{{savingId}}
+Cookie: connect.sid={{cookie}}
+Content-Type: application/json
+
+{ "months": { "2025-11": 50000, "2025-12": 60000, "2026-01": 40000 } }
+
+### Delete savings
+DELETE {{host}}/savings/{{savingId}}
+Cookie: connect.sid={{cookie}}
+
+
+### Get all withdraws
+GET {{host}}/withdraws
+Cookie: connect.sid={{cookie}}
+
+### Get the withdraws of one member
+GET {{host}}/withdraws/member/{{memberId}}
+Cookie: connect.sid={{cookie}}
+
+### Create withdraws
+POST {{host}}/withdraws
+Cookie: connect.sid={{cookie}}
+Content-Type: application/json
+
+{ "memberId": "{{memberId}}", "months": { "2025-11": 20000, "2025-12": 15000 } }
+
+### Update withdraws
+PUT {{host}}/withdraws/{{withdrawId}}
+Cookie: connect.sid={{cookie}}
+Content-Type: application/json
+
+{ "months": { "2025-11": 20000, "2025-12": 25000 } }
+
+### Delete withdraws
+DELETE {{host}}/withdraws/{{withdrawId}}
+Cookie: connect.sid={{cookie}}
+
+
+// A few error cases
+
+### Invalid id -> 400
+GET {{host}}/loans/123
+Cookie: connect.sid={{cookie}}
+
+### Unknown id -> 404
+GET {{host}}/loans/aaaaaaaaaaaaaaaaaaaaaaaa
+Cookie: connect.sid={{cookie}}
+
+### Missing fields -> 400
+POST {{host}}/profile
+Cookie: connect.sid={{cookie}}
+Content-Type: application/json
+
+{ "firstName": "Only" }
+
+### Member that does not exist -> 400
+POST {{host}}/loans
+Cookie: connect.sid={{cookie}}
+Content-Type: application/json
+
+{ "memberId": "aaaaaaaaaaaaaaaaaaaaaaaa", "totalLoan": 900000, "period": 12 }
+
+### Same member twice (send the savings POST two times) -> 409
+
+### Without the cookie (not logged in) -> 401
+GET {{host}}/profile
