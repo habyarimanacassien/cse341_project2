@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 require('dotenv').config();
 
 const requiredVariables = ['MONGODB_URL', 'SESSION_SECRET', 'GITHUB_CLIENT_ID', 'GITHUB_CLIENT_SECRET', 'CALLBACK_URL'];
@@ -15,6 +16,12 @@ const passport = require('passport');
 const mongodb = require('./data/database');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 require('./config/passport');
+=======
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongodb = require('./data/database');
+const { notFound, errorHandler } = require('./middleware/errorHandler');
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
 const app = express();
 
 const port = process.env.PORT || 3000;
@@ -22,6 +29,7 @@ const port = process.env.PORT || 3000;
 app.set('trust proxy', 1); // Render sits in front of the app, this keeps https working
 
 app.use(bodyParser.json());
+<<<<<<< HEAD
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -31,6 +39,8 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
 app.use((req, res, next) => {
     req.body = req.body || {}; // requests without a body get an empty object
     res.setHeader('Access-Control-Allow-Origin', '*');

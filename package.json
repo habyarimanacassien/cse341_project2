@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "body-parser": "^2.3.0",
+<<<<<<< HEAD
     "connect-mongo": "^6.0.0",
     "dotenv": "^18.0.4",
     "exceljs": "^4.4.0",
@@ -30,6 +31,12 @@
     "mongoose": "^9.10.3",
     "passport": "^0.7.0",
     "passport-github2": "^0.1.12",
+=======
+    "dotenv": "^18.0.4",
+    "exceljs": "^4.4.0",
+    "express": "^5.2.1",
+    "mongoose": "^9.10.3",
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     "swagger-autogen": "^2.23.7",
     "swagger-ui-express": "^5.0.1"
   },

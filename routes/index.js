@@ -1,4 +1,5 @@
 const router = require('express').Router();
+<<<<<<< HEAD
 const isAuthenticated = require('../middleware/authenticate');
 
 router.use('/', require('./swagger'));
@@ -18,3 +19,20 @@ router.use('/savings', isAuthenticated, require('./savings'));
 router.use('/withdraws', isAuthenticated, require('./withdraws'));
 
 module.exports = router;
+=======
+
+router.use('/', require('./swagger'));
+
+router.get('/', (req, res) => {
+    //#swagger.tags=['Hello World'];
+    res.send("Caisse d'Entraide API");
+});
+
+router.use('/profile', require('./profile'));
+router.use('/loans', require('./loans'));
+router.use('/interest', require('./interest'));
+router.use('/savings', require('./savings'));
+router.use('/withdraws', require('./withdraws'));
+
+module.exports = router;
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f

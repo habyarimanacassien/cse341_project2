@@ -2,7 +2,11 @@
   "swagger": "2.0",
   "info": {
     "title": "Caisse d'Entraide API",
+<<<<<<< HEAD
     "description": "Members (profile), loans, interest, savings and withdraws. Every data route needs a login: open /login in the browser, sign in with GitHub, then come back to this page and use Try it out.",
+=======
+    "description": "Members (profile), loans, interest, savings and withdraws",
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     "version": "1.0.0"
   },
   "host": "localhost:3000",
@@ -24,6 +28,7 @@
         }
       }
     },
+<<<<<<< HEAD
     "/login": {
       "get": {
         "tags": [
@@ -50,6 +55,8 @@
         }
       }
     },
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     "/profile/": {
       "get": {
         "tags": [
@@ -59,9 +66,12 @@
         "responses": {
           "200": {
             "description": "OK"
+<<<<<<< HEAD
           },
           "401": {
             "description": "You must log in first"
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           }
         }
       },
@@ -121,9 +131,12 @@
         "responses": {
           "201": {
             "description": "Created"
+<<<<<<< HEAD
           },
           "401": {
             "description": "You must log in first"
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           }
         }
       }
@@ -149,9 +162,12 @@
           "400": {
             "description": "Bad Request"
           },
+<<<<<<< HEAD
           "401": {
             "description": "You must log in first"
           },
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           "404": {
             "description": "Not Found"
           }
@@ -194,9 +210,12 @@
           "400": {
             "description": "Bad Request"
           },
+<<<<<<< HEAD
           "401": {
             "description": "You must log in first"
           },
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           "404": {
             "description": "Not Found"
           }
@@ -222,9 +241,12 @@
           "400": {
             "description": "Bad Request"
           },
+<<<<<<< HEAD
           "401": {
             "description": "You must log in first"
           },
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           "404": {
             "description": "Not Found"
           },
@@ -243,9 +265,12 @@
         "responses": {
           "200": {
             "description": "OK"
+<<<<<<< HEAD
           },
           "401": {
             "description": "You must log in first"
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           }
         }
       },
@@ -285,9 +310,12 @@
         "responses": {
           "201": {
             "description": "Created"
+<<<<<<< HEAD
           },
           "401": {
             "description": "You must log in first"
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           }
         }
       }
@@ -312,9 +340,12 @@
           },
           "400": {
             "description": "Bad Request"
+<<<<<<< HEAD
           },
           "401": {
             "description": "You must log in first"
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           }
         }
       }
@@ -340,9 +371,12 @@
           "400": {
             "description": "Bad Request"
           },
+<<<<<<< HEAD
           "401": {
             "description": "You must log in first"
           },
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           "404": {
             "description": "Not Found"
           }
@@ -385,9 +419,12 @@
           "400": {
             "description": "Bad Request"
           },
+<<<<<<< HEAD
           "401": {
             "description": "You must log in first"
           },
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           "404": {
             "description": "Not Found"
           }
@@ -413,9 +450,12 @@
           "400": {
             "description": "Bad Request"
           },
+<<<<<<< HEAD
           "401": {
             "description": "You must log in first"
           },
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           "404": {
             "description": "Not Found"
           }
@@ -431,9 +471,12 @@
         "responses": {
           "200": {
             "description": "OK"
+<<<<<<< HEAD
           },
           "401": {
             "description": "You must log in first"
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           }
         }
       },
@@ -477,9 +520,12 @@
         "responses": {
           "201": {
             "description": "Created"
+<<<<<<< HEAD
           },
           "401": {
             "description": "You must log in first"
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           }
         }
       }
@@ -504,9 +550,12 @@
           },
           "400": {
             "description": "Bad Request"
+<<<<<<< HEAD
           },
           "401": {
             "description": "You must log in first"
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           }
         }
       }
@@ -532,9 +581,12 @@
           "400": {
             "description": "Bad Request"
           },
+<<<<<<< HEAD
           "401": {
             "description": "You must log in first"
           },
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           "404": {
             "description": "Not Found"
           }
@@ -582,9 +634,12 @@
           "400": {
             "description": "Bad Request"
           },
+<<<<<<< HEAD
           "401": {
             "description": "You must log in first"
           },
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           "404": {
             "description": "Not Found"
           }
@@ -610,9 +665,12 @@
           "400": {
             "description": "Bad Request"
           },
+<<<<<<< HEAD
           "401": {
             "description": "You must log in first"
           },
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           "404": {
             "description": "Not Found"
           }
@@ -628,9 +686,12 @@
         "responses": {
           "200": {
             "description": "OK"
+<<<<<<< HEAD
           },
           "401": {
             "description": "You must log in first"
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           }
         }
       },
@@ -679,9 +740,12 @@
         "responses": {
           "201": {
             "description": "Created"
+<<<<<<< HEAD
           },
           "401": {
             "description": "You must log in first"
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           }
         }
       }
@@ -706,9 +770,12 @@
           },
           "400": {
             "description": "Bad Request"
+<<<<<<< HEAD
           },
           "401": {
             "description": "You must log in first"
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           }
         }
       }
@@ -734,9 +801,12 @@
           "400": {
             "description": "Bad Request"
           },
+<<<<<<< HEAD
           "401": {
             "description": "You must log in first"
           },
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           "404": {
             "description": "Not Found"
           }
@@ -792,9 +862,12 @@
           "400": {
             "description": "Bad Request"
           },
+<<<<<<< HEAD
           "401": {
             "description": "You must log in first"
           },
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           "404": {
             "description": "Not Found"
           }
@@ -820,9 +893,12 @@
           "400": {
             "description": "Bad Request"
           },
+<<<<<<< HEAD
           "401": {
             "description": "You must log in first"
           },
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           "404": {
             "description": "Not Found"
           }
@@ -838,9 +914,12 @@
         "responses": {
           "200": {
             "description": "OK"
+<<<<<<< HEAD
           },
           "401": {
             "description": "You must log in first"
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           }
         }
       },
@@ -884,9 +963,12 @@
         "responses": {
           "201": {
             "description": "Created"
+<<<<<<< HEAD
           },
           "401": {
             "description": "You must log in first"
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           }
         }
       }
@@ -911,9 +993,12 @@
           },
           "400": {
             "description": "Bad Request"
+<<<<<<< HEAD
           },
           "401": {
             "description": "You must log in first"
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           }
         }
       }
@@ -939,9 +1024,12 @@
           "400": {
             "description": "Bad Request"
           },
+<<<<<<< HEAD
           "401": {
             "description": "You must log in first"
           },
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           "404": {
             "description": "Not Found"
           }
@@ -989,9 +1077,12 @@
           "400": {
             "description": "Bad Request"
           },
+<<<<<<< HEAD
           "401": {
             "description": "You must log in first"
           },
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           "404": {
             "description": "Not Found"
           }
@@ -1017,9 +1108,12 @@
           "400": {
             "description": "Bad Request"
           },
+<<<<<<< HEAD
           "401": {
             "description": "You must log in first"
           },
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
           "404": {
             "description": "Not Found"
           }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Log in first: open http://localhost:3000/login in the browser and sign in with GitHub.
 // Then press F12 > Application > Cookies, copy the value of connect.sid and paste it in @cookie.
 // Testing: send "Create member", copy the "_id" of the reply into @memberId, then create a loan,
@@ -21,6 +22,26 @@ Cookie: connect.sid={{cookie}}
 ### Create member
 POST {{host}}/profile
 Cookie: connect.sid={{cookie}}
+=======
+// LOCALHOST
+
+
+@host = http://localhost:3000
+@memberId = 6abd06fc3670a7ef3186328d
+@loanId = 6abd07893670a7ef3186328e
+@interestId = 6abd07993670a7ef3186328f
+@savingId = 6abd07b03670a7ef31863290
+@withdrawId = 6abd07b83670a7ef31863291
+
+### Get all members
+GET {{host}}/profile
+
+### Get one member
+GET {{host}}/profile/{{memberId}}
+
+### Create member
+POST {{host}}/profile
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
 Content-Type: application/json
 
 {
@@ -35,18 +56,25 @@ Content-Type: application/json
 
 ### Update member
 PUT {{host}}/profile/{{memberId}}
+<<<<<<< HEAD
 Cookie: connect.sid={{cookie}}
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
 Content-Type: application/json
 
 { "address": "West" }
 
 ### Delete member (after deleting its loan, interest, savings and withdraws)
 DELETE {{host}}/profile/{{memberId}}
+<<<<<<< HEAD
 Cookie: connect.sid={{cookie}}
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
 
 
 ### Get all loans
 GET {{host}}/loans
+<<<<<<< HEAD
 Cookie: connect.sid={{cookie}}
 
 ### Get the loans of one member
@@ -56,24 +84,39 @@ Cookie: connect.sid={{cookie}}
 ### Create loan
 POST {{host}}/loans
 Cookie: connect.sid={{cookie}}
+=======
+
+### Get the loans of one member
+GET {{host}}/loans/member/{{memberId}}
+
+### Create loan
+POST {{host}}/loans
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
 Content-Type: application/json
 
 { "memberId": "{{memberId}}", "totalLoan": 900000, "period": 12 }
 
 ### Update loan
 PUT {{host}}/loans/{{loanId}}
+<<<<<<< HEAD
 Cookie: connect.sid={{cookie}}
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
 Content-Type: application/json
 
 { "totalLoan": 950000, "period": 18 }
 
 ### Delete loan
 DELETE {{host}}/loans/{{loanId}}
+<<<<<<< HEAD
 Cookie: connect.sid={{cookie}}
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
 
 
 ### Get all interest
 GET {{host}}/interest
+<<<<<<< HEAD
 Cookie: connect.sid={{cookie}}
 
 ### Get the interest of one member
@@ -83,12 +126,21 @@ Cookie: connect.sid={{cookie}}
 ### Create interest
 POST {{host}}/interest
 Cookie: connect.sid={{cookie}}
+=======
+
+### Get the interest of one member
+GET {{host}}/interest/member/{{memberId}}
+
+### Create interest
+POST {{host}}/interest
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
 Content-Type: application/json
 
 { "memberId": "{{memberId}}", "years": { "2025": 100000, "2026": 120000 } }
 
 ### Update interest
 PUT {{host}}/interest/{{interestId}}
+<<<<<<< HEAD
 Cookie: connect.sid={{cookie}}
 Content-Type: application/json
 
@@ -97,10 +149,19 @@ Content-Type: application/json
 ### Delete interest
 DELETE {{host}}/interest/{{interestId}}
 Cookie: connect.sid={{cookie}}
+=======
+Content-Type: application/json
+
+{ "years": { "2025": 101000, "2026": 130000 } }
+
+### Delete interest
+DELETE {{host}}/interest/{{interestId}}
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
 
 
 ### Get all savings
 GET {{host}}/savings
+<<<<<<< HEAD
 Cookie: connect.sid={{cookie}}
 
 ### Get the savings of one member
@@ -110,24 +171,39 @@ Cookie: connect.sid={{cookie}}
 ### Create savings
 POST {{host}}/savings
 Cookie: connect.sid={{cookie}}
+=======
+
+### Get the savings of one member
+GET {{host}}/savings/member/{{memberId}}
+
+### Create savings
+POST {{host}}/savings
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
 Content-Type: application/json
 
 { "memberId": "{{memberId}}", "startUp": 100000, "months": { "2025-11": 50000, "2025-12": 60000 } }
 
 ### Update savings (add a month)
 PUT {{host}}/savings/{{savingId}}
+<<<<<<< HEAD
 Cookie: connect.sid={{cookie}}
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
 Content-Type: application/json
 
 { "months": { "2025-11": 50000, "2025-12": 60000, "2026-01": 40000 } }
 
 ### Delete savings
 DELETE {{host}}/savings/{{savingId}}
+<<<<<<< HEAD
 Cookie: connect.sid={{cookie}}
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
 
 
 ### Get all withdraws
 GET {{host}}/withdraws
+<<<<<<< HEAD
 Cookie: connect.sid={{cookie}}
 
 ### Get the withdraws of one member
@@ -137,19 +213,31 @@ Cookie: connect.sid={{cookie}}
 ### Create withdraws
 POST {{host}}/withdraws
 Cookie: connect.sid={{cookie}}
+=======
+
+### Get the withdraws of one member
+GET {{host}}/withdraws/member/{{memberId}}
+
+### Create withdraws
+POST {{host}}/withdraws
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
 Content-Type: application/json
 
 { "memberId": "{{memberId}}", "months": { "2025-11": 20000, "2025-12": 15000 } }
 
 ### Update withdraws
 PUT {{host}}/withdraws/{{withdrawId}}
+<<<<<<< HEAD
 Cookie: connect.sid={{cookie}}
+=======
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
 Content-Type: application/json
 
 { "months": { "2025-11": 20000, "2025-12": 25000 } }
 
 ### Delete withdraws
 DELETE {{host}}/withdraws/{{withdrawId}}
+<<<<<<< HEAD
 Cookie: connect.sid={{cookie}}
 
 
@@ -173,11 +261,35 @@ Content-Type: application/json
 ### Member that does not exist -> 400
 POST {{host}}/loans
 Cookie: connect.sid={{cookie}}
+=======
+
+
+// A FEW ERROR CASES
+
+### Invalid id -> 400
+GET {{host}}/loans/123
+
+### Unknown id -> 404
+GET {{host}}/loans/aaaaaaaaaaaaaaaaaaaaaaaa
+
+### Missing fields -> 400
+POST {{host}}/profile
+Content-Type: application/json
+
+{ "firstName": "Only" , "memberSince": 2024}
+
+### Member that does not exist -> 400
+POST {{host}}/loans
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
 Content-Type: application/json
 
 { "memberId": "aaaaaaaaaaaaaaaaaaaaaaaa", "totalLoan": 900000, "period": 12 }
 
+<<<<<<< HEAD
 ### Same member twice (send the savings POST two times) -> 409
 
 ### Without the cookie (not logged in) -> 401
 GET {{host}}/profile
+=======
+### Same member twice (send the savings POST two times) -> 409
+>>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
