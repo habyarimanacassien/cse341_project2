@@ -6,10 +6,7 @@ const Withdraw = require('../models/withdraw');
 
 const getAll = async (req, res, next) => {
     //#swagger.tags=['Profile'];
-<<<<<<< HEAD
     //#swagger.responses[401] = { description: 'You must log in first' };
-=======
->>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     try {
         const members = await Profile.find();
         res.status(200).json(members);
@@ -20,10 +17,7 @@ const getAll = async (req, res, next) => {
 
 const getSingle = async (req, res, next) => {
     //#swagger.tags=['Profile'];
-<<<<<<< HEAD
     //#swagger.responses[401] = { description: 'You must log in first' };
-=======
->>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     try {
         const member = await Profile.findById(req.params.id);
         if (!member) return res.status(404).json({ message: 'Member not found.' });
@@ -36,10 +30,7 @@ const getSingle = async (req, res, next) => {
 const createProfile = async (req, res, next) => {
     //#swagger.tags=['Profile'];
     //#swagger.parameters['body'] = { in: 'body', schema: { $familyName: 'MUHIRE', $firstName: 'Annonciathe', $email: 'annonciathe@example.com', $phoneNumber: '+250788123456', $nationalID: '1199580012345678', $address: 'Kigali', $memberSince: 2025 } };
-<<<<<<< HEAD
     //#swagger.responses[401] = { description: 'You must log in first' };
-=======
->>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     try {
         const member = await Profile.create(req.body);
         res.status(201).json(member);
@@ -51,10 +42,7 @@ const createProfile = async (req, res, next) => {
 const updateProfile = async (req, res, next) => {
     //#swagger.tags=['Profile'];
     //#swagger.parameters['body'] = { in: 'body', schema: { address: 'West', phoneNumber: '+250788123456' } };
-<<<<<<< HEAD
     //#swagger.responses[401] = { description: 'You must log in first' };
-=======
->>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     try {
         const member = await Profile.findById(req.params.id);
         if (!member) return res.status(404).json({ message: 'Member not found.' });
@@ -68,10 +56,7 @@ const updateProfile = async (req, res, next) => {
 
 const deleteProfile = async (req, res, next) => {
     //#swagger.tags=['Profile'];
-<<<<<<< HEAD
     //#swagger.responses[401] = { description: 'You must log in first' };
-=======
->>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     try {
         const member = await Profile.findById(req.params.id);
         if (!member) return res.status(404).json({ message: 'Member not found.' });

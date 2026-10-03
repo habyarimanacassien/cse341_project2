@@ -2,10 +2,7 @@ const Loan = require('../models/loan');
 
 const getAll = async (req, res, next) => {
     //#swagger.tags=['Loans'];
-<<<<<<< HEAD
     //#swagger.responses[401] = { description: 'You must log in first' };
-=======
->>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     try {
         const loans = await Loan.find().populate('memberId', 'familyName firstName');
         res.status(200).json(loans);
@@ -17,10 +14,7 @@ const getAll = async (req, res, next) => {
 const getByMember = async (req, res, next) => {
     //#swagger.tags=['Loans'];
     //#swagger.description='Records of one member. Use the _id from GET /profile.';
-<<<<<<< HEAD
     //#swagger.responses[401] = { description: 'You must log in first' };
-=======
->>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     try {
         const loans = await Loan.find({ memberId: req.params.memberId }).populate('memberId', 'familyName firstName');
         res.status(200).json(loans);
@@ -31,10 +25,7 @@ const getByMember = async (req, res, next) => {
 
 const getSingle = async (req, res, next) => {
     //#swagger.tags=['Loans'];
-<<<<<<< HEAD
     //#swagger.responses[401] = { description: 'You must log in first' };
-=======
->>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     try {
         const loan = await Loan.findById(req.params.id).populate('memberId', 'familyName firstName');
         if (!loan) return res.status(404).json({ message: 'Loan not found.' });
@@ -47,10 +38,7 @@ const getSingle = async (req, res, next) => {
 const createLoan = async (req, res, next) => {
     //#swagger.tags=['Loans'];
     //#swagger.parameters['body'] = { in: 'body', schema: { $memberId: 'member id from GET /profile', $totalLoan: 2000000, $period: 12 } };
-<<<<<<< HEAD
     //#swagger.responses[401] = { description: 'You must log in first' };
-=======
->>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     try {
         const loan = await Loan.create(req.body);
         res.status(201).json(loan);
@@ -62,10 +50,7 @@ const createLoan = async (req, res, next) => {
 const updateLoan = async (req, res, next) => {
     //#swagger.tags=['Loans'];
     //#swagger.parameters['body'] = { in: 'body', schema: { totalLoan: 2500000, period: 18 } };
-<<<<<<< HEAD
     //#swagger.responses[401] = { description: 'You must log in first' };
-=======
->>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     try {
         const loan = await Loan.findById(req.params.id);
         if (!loan) return res.status(404).json({ message: 'Loan not found.' });
@@ -79,10 +64,7 @@ const updateLoan = async (req, res, next) => {
 
 const deleteLoan = async (req, res, next) => {
     //#swagger.tags=['Loans'];
-<<<<<<< HEAD
     //#swagger.responses[401] = { description: 'You must log in first' };
-=======
->>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     try {
         const loan = await Loan.findByIdAndDelete(req.params.id);
         if (!loan) return res.status(404).json({ message: 'Loan not found.' });

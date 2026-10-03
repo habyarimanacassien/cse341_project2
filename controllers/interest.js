@@ -2,10 +2,7 @@ const Interest = require('../models/interest');
 
 const getAll = async (req, res, next) => {
     //#swagger.tags=['Interest'];
-<<<<<<< HEAD
     //#swagger.responses[401] = { description: 'You must log in first' };
-=======
->>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     try {
         const interest = await Interest.find().populate('memberId', 'familyName firstName');
         res.status(200).json(interest);
@@ -17,10 +14,7 @@ const getAll = async (req, res, next) => {
 const getByMember = async (req, res, next) => {
     //#swagger.tags=['Interest'];
     //#swagger.description='Records of one member. Use the _id from GET /profile.';
-<<<<<<< HEAD
     //#swagger.responses[401] = { description: 'You must log in first' };
-=======
->>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     try {
         const interest = await Interest.find({ memberId: req.params.memberId }).populate('memberId', 'familyName firstName');
         res.status(200).json(interest);
@@ -31,10 +25,7 @@ const getByMember = async (req, res, next) => {
 
 const getSingle = async (req, res, next) => {
     //#swagger.tags=['Interest'];
-<<<<<<< HEAD
     //#swagger.responses[401] = { description: 'You must log in first' };
-=======
->>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     try {
         const interest = await Interest.findById(req.params.id).populate('memberId', 'familyName firstName');
         if (!interest) return res.status(404).json({ message: 'Interest not found.' });
@@ -47,10 +38,7 @@ const getSingle = async (req, res, next) => {
 const createInterest = async (req, res, next) => {
     //#swagger.tags=['Interest'];
     //#swagger.parameters['body'] = { in: 'body', schema: { $memberId: 'member id from GET /profile', $years: { '2025': 155000, '2026': 192000 } } };
-<<<<<<< HEAD
     //#swagger.responses[401] = { description: 'You must log in first' };
-=======
->>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     try {
         const interest = await Interest.create(req.body);
         res.status(201).json(interest);
@@ -62,10 +50,7 @@ const createInterest = async (req, res, next) => {
 const updateInterest = async (req, res, next) => {
     //#swagger.tags=['Interest'];
     //#swagger.parameters['body'] = { in: 'body', schema: { years: { '2025': 155000, '2026': 200000 } } };
-<<<<<<< HEAD
     //#swagger.responses[401] = { description: 'You must log in first' };
-=======
->>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     try {
         const interest = await Interest.findById(req.params.id);
         if (!interest) return res.status(404).json({ message: 'Interest not found.' });
@@ -79,10 +64,7 @@ const updateInterest = async (req, res, next) => {
 
 const deleteInterest = async (req, res, next) => {
     //#swagger.tags=['Interest'];
-<<<<<<< HEAD
     //#swagger.responses[401] = { description: 'You must log in first' };
-=======
->>>>>>> ed1362fee85a5422402f6169b89962c07f12bf7f
     try {
         const interest = await Interest.findByIdAndDelete(req.params.id);
         if (!interest) return res.status(404).json({ message: 'Interest not found.' });
